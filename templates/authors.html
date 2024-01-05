@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% block body %}
+<a class="bi bi-person-add" href="/author/add/"> Новий автор</a>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th class="edit_col"></th>
+        <th class="edit_col"></th>
+    </tr>
+    {% for author in authors %}
+    <tr>
+        <td><img src="/static/foto/{{ author.image }}"></td>
+        <td><a href="/book/get-all/{{ author.id }}">{{ author.name }}</a></td>
+        <td><a href="/author/edit/{{ author.id }}" class="bi bi-pencil"></a></td>
+        <td><a href="/author/delete/{{ author.id }}" class="bi bi-trash"
+                onclick="return confirm('Delete author {{ author.name }}')"></a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
